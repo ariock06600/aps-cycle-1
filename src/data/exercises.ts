@@ -766,19 +766,19 @@ export const EXERCISES: Exercise[] = [
     workSetup:
       'En classe ou en demi-groupe sur TBI, puis rituel hebdomadaire recommandé par la fiche DGESCO : chaque semaine, 2 ou 3 élèves signalent un objet ou lieu de vigilance dans l’école avec un autocollant triangle.',
     differentiation:
-      'Comparer la forme géométrique du triangle de danger (pointe en haut, bordure rouge, fond jaune) aux panneaux observés autour de l’école ou dans le dispositif ludo-éducatif Riskou.',
+      'Comparer les vrais panneaux officiels : le triangle jaune à bordure noire (norme ISO 7010 dans les bâtiments et écoles : sol glissant W011, danger électrique W012, toxique W016) et le triangle blanc à bordure rouge dans la rue (panneau routier A14).',
     evaluationCriteria:
-      'L’élève place le pictogramme triangle uniquement sur les 3 zones dangereuses et formule une conduite adaptée pour les camarades.',
+      'L’élève place le pictogramme triangle officiel uniquement sur les 3 zones dangereuses et formule une conduite adaptée pour les camarades.',
     languagePrompts: [
-      'À quoi reconnaît-on le panneau qui annonce un danger ? Quelle est sa forme ?',
-      'Pourquoi est-il utile de coller un triangle avant même que tout le monde passe ?',
+      'À quoi reconnaît-on le panneau officiel qui annonce un danger dans l’école (triangle jaune à bordure noire) ?',
+      'Que représente le dessin noir à l’intérieur de chaque triangle (personne qui glisse, éclair, tête de mort) ?',
       'Quelle conduite proposerais-tu aux camarades pour chaque triangle posé ?',
     ],
-    keyTakeaway: 'Le triangle rouge et jaune signifie « Attention, danger ! ». Je m’arrête, j’observe et je préviens un adulte.',
+    keyTakeaway: 'Le triangle jaune à bordure noire signifie « Attention, danger ! ». Je m’arrête, j’observe le dessin et je préviens un adulte.',
     riskExplanation:
       'Sans signalisation, un camarade peut glisser sur le sol mouillé, trébucher sur le câble ou ouvrir l’armoire de produits.',
     safeExplanation:
-      'Les 3 zones à risque sont clairement signalées par le triangle ▲ pour que toute l’école fasse attention.',
+      'Les 3 zones à risque sont clairement signalées par les triangles officiels ISO 7010 pour que toute l’école fasse attention.',
     hotspots: [
       {
         id: 'wet-corridor',
@@ -956,30 +956,30 @@ export const EXERCISES: Exercise[] = [
     childInstruction:
       'Observe les étiquettes et les pictogrammes : quels produits sont comestibles et lesquels sont dangereux ?',
     objective:
-      'Reconnaître un danger signalé par un pictogramme officiel (losange rouge toxique/inflammable) et ne jamais confondre un produit avec une boisson.',
+      'Reconnaître les vrais pictogrammes officiels européens CLP/SGH (losange blanc à bordure rouge et symbole noir : Tête de mort SGH06, Inflammable SGH02, Corrosif SGH05, Nocif/Irritant SGH07) et ne jamais confondre un produit avec une boisson.',
     competencies: [
-      'Observer les règles élémentaires de sécurité liées aux produits rencontrés dans la vie quotidienne (Domaine 4).',
-      'Reconnaître un danger signalé par un pictogramme normé et différencier médicament et confiserie.',
+      'Observer les règles élémentaires de sécurité liées aux techniques et produits rencontrés dans la vie quotidienne (Domaine 4).',
+      'Reconnaître les 4 pictogrammes de danger chimique officiels (CLP/SGH) présents sur les flacons ménagers en France.',
     ],
     workSetup:
-      'Petit groupe d’observation fine. Montrer de vraies étiquettes découpées (flacons vides et lavés) présentant le losange rouge réglementaire avant d’effectuer le tri sur l’écran.',
+      'Petit groupe d’observation fine. Montrer de vraies étiquettes découpées (flacons vides et lavés) présentant les losanges blancs à bordure rouge réglementaires (SGH02, SGH05, SGH06, SGH07) avant d’effectuer le tri sur l’écran.',
     differentiation:
       'Évoquer la règle cruciale du déconditionnement : « On ne boit jamais dans une bouteille sans étiquette ou qu’on ne reconnaît pas, même si le liquide ressemble à de l’eau ou du sirop ».',
     evaluationCriteria:
-      'L’élève repère le pictogramme de danger et les médicaments, et justifie son classement par un indice visuel précis.',
+      'L’élève repère les 4 pictogrammes officiels CLP (losange blanc à bordure rouge, symbole noir) et nomme le danger représenté.',
     languagePrompts: [
-      'Quel dessin spécial vois-tu sur la bouteille dangereuse (losange rouge, flamme, point d’exclamation) ?',
-      'Pourquoi les médicaments ressemblent-ils parfois à des bonbons ? Qui seul peut t’en donner ?',
+      'Quelle est la forme et la couleur du cadre des vrais pictogrammes de produits dangereux (losange blanc bordé de rouge) ?',
+      'Que signifient la tête de mort, la flamme, la main attaquée par des gouttes et le point d’exclamation noir ?',
       'Que fais-tu si tu vois une bouteille sans étiquette ?',
     ],
-    keyTakeaway: 'Un losange rouge ou un médicament, je ne touche pas et je ne goûte jamais sans mes parents ou le médecin.',
+    keyTakeaway: 'Un losange blanc bordé de rouge avec un dessin noir (tête de mort, flamme, corrosif ou « ! ») signale un produit dangereux : je ne touche pas et je ne goûte jamais !',
     riskExplanation:
-      'Confondre un produit ménager ou un médicament avec une boisson ou un bonbon entraîne une intoxication grave.',
+      'Confondre un produit ménager toxique, corrosif, inflammable ou irritant avec une boisson entraîne une intoxication ou une brûlure grave.',
     safeExplanation:
-      'L’eau et le jus de pomme sont identifiés comme alimentaires ; les produits à pictogramme rouge et les médicaments restent sous contrôle adulte.',
+      'L’eau et le jus de pomme sont identifiés comme alimentaires ; les 4 produits portant un pictogramme officiel CLP/SGH restent hors de portée des enfants.',
     sortLabels: {
-      safeTitle: 'Boisson / Aliment sûr',
-      dangerTitle: 'Danger · Ne jamais goûter',
+      safeTitle: 'Boisson sûre',
+      dangerTitle: 'Produit dangereux',
     },
     sortItems: [
       {
@@ -990,11 +990,18 @@ export const EXERCISES: Exercise[] = [
         explanation: 'L’eau de la carafe à table est faite pour se désaltérer sans danger.',
       },
       {
-        id: 'flammable-can',
-        label: 'Bidon avec pictogramme flamme',
-        iconKey: 'flammable',
+        id: 'toxic-skull-bottle',
+        label: 'Toxique · Tête de mort (SGH06)',
+        iconKey: 'sgh06-toxic',
         category: 'danger',
-        explanation: 'Le losange rouge avec une flamme indique un produit inflammable et toxique !',
+        explanation: 'Pictogramme officiel SGH06 (tête de mort) : produit très toxique, voire mortel si on l’avale ou le respire !',
+      },
+      {
+        id: 'flammable-can',
+        label: 'Inflammable · Flamme (SGH02)',
+        iconKey: 'sgh02-flammable',
+        category: 'danger',
+        explanation: 'Pictogramme officiel SGH02 (flamme noire) : produit qui peut prendre feu très vite !',
       },
       {
         id: 'apple-juice',
@@ -1004,11 +1011,18 @@ export const EXERCISES: Exercise[] = [
         explanation: 'Une boisson de goûter clairement identifiée, sans pictogramme de danger.',
       },
       {
-        id: 'medicine-box',
-        label: 'Gélules et médicaments',
-        iconKey: 'medicine',
+        id: 'corrosive-bottle',
+        label: 'Corrosif · Ronge la peau (SGH05)',
+        iconKey: 'sgh05-corrosive',
         category: 'danger',
-        explanation: 'Les médicaments ne sont pas des bonbons ! Seul un adulte peut en donner.',
+        explanation: 'Pictogramme officiel SGH05 (corrosif) : produit qui brûle la peau et les yeux (ex. eau de Javel, déboucheur) !',
+      },
+      {
+        id: 'irritant-spray',
+        label: 'Nocif / Irritant · Point « ! » (SGH07)',
+        iconKey: 'sgh07-irritant',
+        category: 'danger',
+        explanation: 'Pictogramme officiel SGH07 (point d’exclamation noir) : produit qui irrite ou rend malade (ex. lessive, nettoyant) !',
       },
     ],
   },

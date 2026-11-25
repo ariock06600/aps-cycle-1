@@ -1,6 +1,7 @@
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { PDF_SOURCE_URL } from '../data/exercises';
 import { SectionId } from '../types/aps';
+import { ClpPictogramSvg, WarningTriangleSvgCard } from './OfficialPictograms';
 
 interface PedagogicalReferenceProps {
   onSelectSection: (section: SectionId) => void;
@@ -263,11 +264,95 @@ export function PedagogicalReference({
         </div>
       </section>
 
-      {/* 05. Évaluation & Supports recommandés (Page 3 du PDF) */}
+      {/* 05. Repères officiels des pictogrammes (ISO 7010, Code de la route & CLP/SGH) */}
+      <section className="bg-white border border-slate-200 rounded-2xl p-6 space-y-5">
+        <div>
+          <div className="text-xs font-semibold text-slate-500">
+            05. Signalétique officielle en France et en Europe
+          </div>
+          <h2 className="mt-1 font-display text-xl font-bold text-slate-950">
+            Les vrais pictogrammes de danger à reconnaître avec la classe
+          </h2>
+          <p className="mt-1 text-sm text-slate-600 leading-relaxed">
+            Dans les bâtiments et écoles, les triangles d’avertissement suivent la norme internationale{' '}
+            <strong>ISO 7010</strong> (fond jaune, bordure et symbole noirs) ; sur la route, le panneau{' '}
+            <strong>A14</strong> est blanc à bordure rouge ; sur les produits chimiques ménagers, les pictogrammes{' '}
+            <strong>CLP / SGH</strong> sont des losanges blancs à bordure rouge et symbole noir.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center text-center gap-2">
+            <WarningTriangleSvgCard variant="w001-general" className="w-14 h-14" title="ISO 7010 W001 : Danger général" />
+            <div>
+              <div className="text-xs font-bold text-slate-900">Danger général</div>
+              <div className="text-[11px] text-slate-500">ISO 7010 · W001</div>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center text-center gap-2">
+            <WarningTriangleSvgCard variant="w011-slippery" className="w-14 h-14" title="ISO 7010 W011 : Sol glissant" />
+            <div>
+              <div className="text-xs font-bold text-slate-900">Sol glissant</div>
+              <div className="text-[11px] text-slate-500">ISO 7010 · W011</div>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center text-center gap-2">
+            <WarningTriangleSvgCard variant="w012-electric" className="w-14 h-14" title="ISO 7010 W012 : Danger électrique" />
+            <div>
+              <div className="text-xs font-bold text-slate-900">Électricité</div>
+              <div className="text-[11px] text-slate-500">ISO 7010 · W012</div>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center text-center gap-2">
+            <WarningTriangleSvgCard variant="a14-road" className="w-14 h-14" title="Code de la route A14 : Danger routier" />
+            <div>
+              <div className="text-xs font-bold text-slate-900">Danger route</div>
+              <div className="text-[11px] text-slate-500">Panneau A14</div>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center text-center gap-2">
+            <ClpPictogramSvg variant="sgh06-toxic" className="w-14 h-14" title="CLP SGH06 : Toxicité aiguë" />
+            <div>
+              <div className="text-xs font-bold text-slate-900">Toxique</div>
+              <div className="text-[11px] text-slate-500">CLP · SGH06</div>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center text-center gap-2">
+            <ClpPictogramSvg variant="sgh02-flammable" className="w-14 h-14" title="CLP SGH02 : Inflammable" />
+            <div>
+              <div className="text-xs font-bold text-slate-900">Inflammable</div>
+              <div className="text-[11px] text-slate-500">CLP · SGH02</div>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center text-center gap-2">
+            <ClpPictogramSvg variant="sgh05-corrosive" className="w-14 h-14" title="CLP SGH05 : Corrosif" />
+            <div>
+              <div className="text-xs font-bold text-slate-900">Corrosif</div>
+              <div className="text-[11px] text-slate-500">CLP · SGH05</div>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col items-center text-center gap-2">
+            <ClpPictogramSvg variant="sgh07-irritant" className="w-14 h-14" title="CLP SGH07 : Nocif ou irritant" />
+            <div>
+              <div className="text-xs font-bold text-slate-900">Nocif / Irritant</div>
+              <div className="text-[11px] text-slate-500">CLP · SGH07</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 06. Évaluation & Supports recommandés (Page 3 du PDF) */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-6 space-y-4">
           <div>
-            <div className="text-xs font-semibold text-slate-500">05. Évaluation envisageable</div>
+            <div className="text-xs font-semibold text-slate-500">06. Évaluation envisageable</div>
             <h2 className="mt-1 font-display text-xl font-bold text-slate-950">
               Critères observables à partir de saynètes
             </h2>
@@ -291,7 +376,7 @@ export function PedagogicalReference({
 
         <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-6 space-y-4">
           <div>
-            <div className="text-xs font-semibold text-slate-500">06. Supports & bibliographie de la fiche</div>
+            <div className="text-xs font-semibold text-slate-500">07. Supports & bibliographie de la fiche</div>
             <h2 className="mt-1 font-display text-xl font-bold text-slate-950">
               Outils, albums et mallettes pour approfondir en classe
             </h2>

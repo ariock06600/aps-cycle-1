@@ -1,3 +1,9 @@
+import {
+  ClpPictogramArtwork,
+  PedestrianLightArtwork,
+  WarningTriangleArtwork,
+} from './OfficialPictograms';
+
 interface ObjectIconProps {
   iconKey: string;
   className?: string;
@@ -67,8 +73,10 @@ export function ObjectIcon({
           <rect x="8" y="8" width="104" height="104" rx="20" fill={tileFill} />
           <rect x="46" y="18" width="28" height="12" rx="4" fill="#DC2626" />
           <path d="M40 34 L80 34 L88 94 C88 99 84 102 79 102 L41 102 C36 102 32 99 32 94 Z" fill="#FACC15" stroke="#CA8A04" strokeWidth="3" />
-          <polygon points="60,46 77,64 60,82 43,64" fill="#FFFFFF" stroke="#DC2626" strokeWidth="4" />
-          <text x="60" y="71" textAnchor="middle" fill="#DC2626" fontSize="22" fontWeight="800">!</text>
+          {/* Official CLP SGH07 pictogram on household cleaner bottle */}
+          <g transform="translate(36, 42) scale(0.48)">
+            <ClpPictogramArtwork variant="sgh07-irritant" />
+          </g>
         </svg>
       );
 
@@ -268,10 +276,9 @@ export function ObjectIcon({
           <line x1="46" y1="80" x2="46" y2="100" stroke="#B45309" strokeWidth="4" />
           <line x1="74" y1="80" x2="74" y2="100" stroke="#B45309" strokeWidth="4" />
           {showValidationGlyph && (
-            <>
-              <polygon points="88,22 102,46 74,46" fill="#FACC15" stroke="#DC2626" strokeWidth="3" />
-              <text x="88" y="42" textAnchor="middle" fill="#DC2626" fontSize="14" fontWeight="800">!</text>
-            </>
+            <g transform="translate(72, 18) scale(0.32)">
+              <WarningTriangleArtwork variant="w001-general" />
+            </g>
           )}
         </svg>
       );
@@ -333,9 +340,9 @@ export function ObjectIcon({
       return (
         <svg viewBox="0 0 120 120" className={className} aria-hidden="true">
           <rect x="8" y="8" width="104" height="104" rx="20" fill={tileFill} />
-          <rect x="40" y="18" width="40" height="84" rx="10" fill="#1E293B" />
-          <circle cx="60" cy="42" r="13" fill="#EF4444" />
-          <circle cx="60" cy="78" r="13" fill="#334155" />
+          <g transform="translate(36, 18)">
+            <PedestrianLightArtwork state="red" />
+          </g>
         </svg>
       );
 
@@ -349,11 +356,43 @@ export function ObjectIcon({
       );
 
     case 'flammable':
+    case 'sgh02-flammable':
       return (
         <svg viewBox="0 0 120 120" className={className} aria-hidden="true">
           <rect x="8" y="8" width="104" height="104" rx="20" fill={tileFill} />
-          <polygon points="60,18 102,60 60,102 18,60" fill="#FFFFFF" stroke="#DC2626" strokeWidth="6" />
-          <path d="M60 36 C70 50 74 58 72 69 C70 77 65 81 60 81 C54 81 48 76 48 67 C48 60 52 54 55 49 C56 54 58 55 59 52 C59 45 58 40 60 36 Z" fill="#1E293B" />
+          <g transform="translate(12, 12) scale(0.96)">
+            <ClpPictogramArtwork variant="sgh02-flammable" />
+          </g>
+        </svg>
+      );
+
+    case 'sgh05-corrosive':
+      return (
+        <svg viewBox="0 0 120 120" className={className} aria-hidden="true">
+          <rect x="8" y="8" width="104" height="104" rx="20" fill={tileFill} />
+          <g transform="translate(12, 12) scale(0.96)">
+            <ClpPictogramArtwork variant="sgh05-corrosive" />
+          </g>
+        </svg>
+      );
+
+    case 'sgh06-toxic':
+      return (
+        <svg viewBox="0 0 120 120" className={className} aria-hidden="true">
+          <rect x="8" y="8" width="104" height="104" rx="20" fill={tileFill} />
+          <g transform="translate(12, 12) scale(0.96)">
+            <ClpPictogramArtwork variant="sgh06-toxic" />
+          </g>
+        </svg>
+      );
+
+    case 'sgh07-irritant':
+      return (
+        <svg viewBox="0 0 120 120" className={className} aria-hidden="true">
+          <rect x="8" y="8" width="104" height="104" rx="20" fill={tileFill} />
+          <g transform="translate(12, 12) scale(0.96)">
+            <ClpPictogramArtwork variant="sgh07-irritant" />
+          </g>
         </svg>
       );
 

@@ -1,4 +1,10 @@
 import { AnimationPreviewMode } from '../types/aps';
+import {
+  ClpPictogramArtwork,
+  PedestrianLightArtwork,
+  WarningTriangleArtwork,
+  WarningTriangleVariant,
+} from './OfficialPictograms';
 
 interface SceneIllustrationProps {
   sceneKey: string;
@@ -8,29 +14,25 @@ interface SceneIllustrationProps {
   isSolved: boolean;
 }
 
-/** Reusable Triangle Danger pictogram (Temps 3 du PDF DGESCO) */
-function WarningTriangleSvg({ x, y, size = 34 }: { x: number; y: number; size?: number }) {
-  const half = size / 2;
+/** Reusable official ISO 7010 / Code de la route A14 Warning Triangle (Temps 3 du PDF DGESCO) */
+function WarningTriangleSvg({
+  x,
+  y,
+  size = 54,
+  variant = 'w001-general',
+}: {
+  x: number;
+  y: number;
+  size?: number;
+  variant?: WarningTriangleVariant;
+}) {
+  const scale = size / 100;
   return (
     <g transform={`translate(${x}, ${y})`}>
       <g className="anim-stamp">
-        <polygon
-          points={`0,${-half} ${half * 1.15},${half * 0.85} ${-half * 1.15},${half * 0.85}`}
-          fill="#FACC15"
-          stroke="#DC2626"
-          strokeWidth="4.5"
-          strokeLinejoin="round"
-        />
-        <text
-          x="0"
-          y={half * 0.52}
-          textAnchor="middle"
-          fill="#0F172A"
-          fontSize={size * 0.62}
-          fontWeight="800"
-        >
-          !
-        </text>
+        <g transform={`translate(${-50 * scale}, ${-54 * scale}) scale(${scale})`}>
+          <WarningTriangleArtwork variant={variant} />
+        </g>
       </g>
     </g>
   );
@@ -160,8 +162,9 @@ export function SceneIllustration({
               <rect x="-8" y="-44" width="16" height="16" fill="#DC2626" />
               <path d="M-16 -44 L18 -44 L24 -34 L-16 -34 Z" fill="#EF4444" />
               <path d="M-22 -28 L22 -28 L28 32 C28 38 22 42 16 42 L-16 42 C-22 42 -28 38 -28 32 Z" fill="#FACC15" stroke="#B45309" strokeWidth="3" />
-              <polygon points="0,-16 15,2 0,20 -15,2" fill="#FFFFFF" stroke="#DC2626" strokeWidth="3.5" />
-              <text x="0" y="9" textAnchor="middle" fill="#DC2626" fontSize="20" fontWeight="800">!</text>
+              <g transform="translate(-20, -14) scale(0.4)">
+                <ClpPictogramArtwork variant="sgh07-irritant" />
+              </g>
             </g>
           ) : (
             <SafeCheckSvg x={448} y={355} />
@@ -214,7 +217,7 @@ export function SceneIllustration({
           {showRisk && (
             <g>
               <path d="M440 170 C400 205 385 245 390 278" fill="none" stroke="#EF4444" strokeWidth="8" strokeDasharray="10 10" strokeLinecap="round" />
-              <WarningTriangleSvg x={410} y={132} size={44} />
+              <WarningTriangleSvg x={410} y={132} size={58} />
             </g>
           )}
 
@@ -422,11 +425,12 @@ export function SceneIllustration({
               <rect x="-78" y="-60" width="156" height="120" rx="4" fill="#334155" />
               {/* Open swinging door */}
               <polygon points="78,-60 116,-44 116,74 78,60" fill="#E2E8F0" stroke="#64748B" strokeWidth="3" />
-              {/* Toxic bottle inside */}
+              {/* Toxic bottle inside with official CLP SGH06 pictogram */}
               <rect x="-16" y="-44" width="22" height="12" rx="3" fill="#DC2626" />
               <rect x="-28" y="-32" width="46" height="74" rx="8" fill="#FACC15" stroke="#CA8A04" strokeWidth="3" />
-              <polygon points="-5,-14 11,4 -5,22 -21,4" fill="#FFFFFF" stroke="#DC2626" strokeWidth="3.5" />
-              <text x="-5" y="11" textAnchor="middle" fill="#DC2626" fontSize="18" fontWeight="800">!</text>
+              <g transform="translate(-25, -15) scale(0.4)">
+                <ClpPictogramArtwork variant="sgh06-toxic" />
+              </g>
             </g>
           )}
         </svg>
@@ -484,7 +488,7 @@ export function SceneIllustration({
               <g className="anim-spark">
                 <polygon points="445,172 422,216 442,216 430,256 468,204 446,204" fill="#FACC15" stroke="#DC2626" strokeWidth="3" />
               </g>
-              {showRisk && <WarningTriangleSvg x={445} y={136} size={46} />}
+              {showRisk && <WarningTriangleSvg x={445} y={136} size={62} variant="w012-electric" />}
             </g>
           )}
         </svg>
@@ -582,7 +586,7 @@ export function SceneIllustration({
                 {showRisk && <circle cx="16" cy="0" r="56" fill="#FEE2E2" opacity="0.8" className="anim-hazard-ring" />}
                 {/* Swung open gate leaf */}
                 <polygon points="-46,-56 14,-28 14,76 -46,50" fill="#94A3B8" stroke="#475569" strokeWidth="4" />
-                {showRisk && <WarningTriangleSvg x={38} y={-10} size={38} />}
+                {showRisk && <WarningTriangleSvg x={38} y={-10} size={52} />}
               </>
             )}
           </g>
@@ -632,7 +636,7 @@ export function SceneIllustration({
 
           {showRisk && (
             <g>
-              <WarningTriangleSvg x={390} y={120} size={46} />
+              <WarningTriangleSvg x={390} y={120} size={60} />
               <line x1="376" y1="205" x2="404" y2="205" stroke="#DC2626" strokeWidth="6" strokeLinecap="round" />
             </g>
           )}
@@ -679,7 +683,7 @@ export function SceneIllustration({
               strokeWidth="3.5"
               opacity="0.85"
             />
-            {wetSignaled && <WarningTriangleSvg x={0} y={-22} size={46} />}
+            {wetSignaled && <WarningTriangleSvg x={0} y={-24} size={64} variant="w011-slippery" />}
           </g>
 
           {/* HAZARD 2: Loose Power Cable across hallway (x=54% -> 432, y=74% -> 355) */}
@@ -693,7 +697,7 @@ export function SceneIllustration({
               strokeLinecap="round"
             />
             <rect x="-82" y="-62" width="22" height="26" rx="4" fill="#475569" />
-            {cableSignaled && <WarningTriangleSvg x={10} y={-16} size={46} />}
+            {cableSignaled && <WarningTriangleSvg x={10} y={-18} size={64} variant="w012-electric" />}
           </g>
 
           {/* HAZARD 3: Open Cleaning Cabinet (x=82% -> 656, y=52% -> 250) */}
@@ -702,11 +706,20 @@ export function SceneIllustration({
             <rect x="-50" y="-76" width="100" height="148" fill="#334155" />
             {/* Open door */}
             <polygon points="64,-92 104,-72 104,104 64,86" fill="#E2E8F0" stroke="#475569" strokeWidth="3" />
-            {/* Cleaning bottles */}
+            {/* Cleaning bottles with miniature official CLP diamonds */}
             <rect x="-34" y="-44" width="28" height="44" rx="5" fill="#FACC15" />
+            <g transform="translate(-31, -32) scale(0.22)">
+              <ClpPictogramArtwork variant="sgh06-toxic" />
+            </g>
             <rect x="6" y="-52" width="30" height="52" rx="5" fill="#EF4444" />
+            <g transform="translate(10, -34) scale(0.22)">
+              <ClpPictogramArtwork variant="sgh02-flammable" />
+            </g>
             <rect x="-24" y="18" width="44" height="48" rx="5" fill="#38BDF8" />
-            {cabinetSignaled && <WarningTriangleSvg x={0} y={0} size={48} />}
+            <g transform="translate(-14, 30) scale(0.24)">
+              <ClpPictogramArtwork variant="sgh05-corrosive" />
+            </g>
+            {cabinetSignaled && <WarningTriangleSvg x={0} y={0} size={68} variant="w016-toxic" />}
           </g>
         </svg>
       );
@@ -734,11 +747,11 @@ export function SceneIllustration({
             <rect key={sy} x="275" y={sy} width="108" height="16" rx="3" fill="#FFFFFF" />
           ))}
 
-          {/* Pedestrian traffic light */}
-          <rect x="228" y="148" width="10" height="102" fill="#334155" />
-          <rect x="212" y="102" width="42" height="68" rx="8" fill="#1E293B" />
-          <circle cx="233" cy="122" r="11" fill={showSafe ? '#475569' : '#EF4444'} />
-          <circle cx="233" cy="148" r="11" fill={showSafe ? '#22C55E' : '#475569'} />
+          {/* Official French Pedestrian traffic light (Feu piéton bonhomme rouge / vert) */}
+          <rect x="228" y="160" width="10" height="90" fill="#334155" />
+          <g transform="translate(209, 92) scale(1)">
+            <PedestrianLightArtwork state={showSafe ? 'green' : 'red'} />
+          </g>
 
           {/* Rolling Ball on street */}
           <g className={showSafe ? '' : 'anim-ball'}>
@@ -764,7 +777,7 @@ export function SceneIllustration({
             <rect x="-14" y="-16" width="28" height="36" rx="8" fill="#1D4ED8" />
           </g>
 
-          {showRisk && <WarningTriangleSvg x={410} y={310} size={48} />}
+          {showRisk && <WarningTriangleSvg x={410} y={310} size={66} variant="a14-road" />}
           {showSafe && (
             <g>
               <SafeCheckSvg x={310} y={366} />
@@ -808,7 +821,7 @@ export function SceneIllustration({
                 {/* Child dangerously close to window */}
                 <circle cx="10" cy="76" r="14" fill="#FDBA74" />
                 <rect x="-2" y="90" width="24" height="34" rx="6" fill="#EF4444" />
-                {showRisk && <WarningTriangleSvg x={0} y={-10} size={42} />}
+                {showRisk && <WarningTriangleSvg x={0} y={-10} size={54} />}
               </>
             )}
           </g>

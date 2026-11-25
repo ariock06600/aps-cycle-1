@@ -10,6 +10,11 @@ import {
 } from 'lucide-react';
 import { getDiagramScenariosBySection, SECTION_ORDER, SECTIONS } from '../data/exercises';
 import { DiagramScenario, SectionId } from '../types/aps';
+import {
+  ClpPictogramArtwork,
+  WarningTriangleArtwork,
+  WarningTriangleVariant,
+} from './OfficialPictograms';
 
 interface DangerRiskDiagramProps {
   initialSection: SectionId;
@@ -18,6 +23,22 @@ interface DangerRiskDiagramProps {
 }
 
 type DiagramStep = 1 | 2 | 3;
+
+function getStepTriangleVariant(sceneKey: DiagramScenario['sceneKey']): WarningTriangleVariant {
+  switch (sceneKey) {
+    case 'water':
+      return 'w011-slippery';
+    case 'electricity':
+    case 'outlet':
+      return 'w012-electric';
+    case 'toxic':
+      return 'w016-toxic';
+    case 'street':
+      return 'a14-road';
+    default:
+      return 'w001-general';
+  }
+}
 
 function DangerGraphicSvg({ sceneKey }: { sceneKey: DiagramScenario['sceneKey'] }) {
   switch (sceneKey) {
@@ -158,12 +179,11 @@ function DangerGraphicSvg({ sceneKey }: { sceneKey: DiagramScenario['sceneKey'] 
             stroke="#CA8A04"
             strokeWidth="3.5"
           />
-          <g className="anim-float">
-            <polygon points="0,-32 28,-2 0,28 -28,-2" fill="#FFFFFF" stroke="#DC2626" strokeWidth="5" />
-            <path
-              d="M0 -18 C8 -8 11 -1 9 8 C7 14 3 16 0 16 C-5 16 -9 12 -9 5 C-9 0 -6 -5 -4 -9 C-3 -5 -1 -4 0 -7 Z"
-              fill="#1E293B"
-            />
+          {/* Official CLP SGH06 (Toxicité aiguë — Tête de mort) */}
+          <g transform="translate(-32, -32) scale(0.64)">
+            <g className="anim-float">
+              <ClpPictogramArtwork variant="sgh06-toxic" />
+            </g>
           </g>
         </g>
       );
@@ -270,16 +290,9 @@ function DiagramSceneSvg({
 
         <g transform="translate(461, 200)">
           {step === 2 && <circle r="68" fill="#FEE2E2" className="anim-hazard-ring" />}
-          <polygon
-            points="0,-54 60,44 -60,44"
-            fill="#FACC15"
-            stroke="#DC2626"
-            strokeWidth="7"
-            strokeLinejoin="round"
-          />
-          <text x="0" y="24" textAnchor="middle" fill="#0F172A" fontSize="54" fontWeight="800">
-            !
-          </text>
+          <g transform="translate(-62, -62) scale(1.24)">
+            <WarningTriangleArtwork variant={getStepTriangleVariant(scenario.sceneKey)} />
+          </g>
         </g>
 
         <foreignObject x="348" y="282" width="226" height="54">
