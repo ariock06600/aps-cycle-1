@@ -5,6 +5,8 @@ import {
   EXERCISES,
   getDiagramScenariosBySection,
   getExercisesBySection,
+  PDF_SOURCE_URL,
+  resolvePublicAssetUrl,
   SECTION_ORDER,
 } from '../data/exercises';
 import {
@@ -58,6 +60,15 @@ test('animated Danger vs Risque diagram defines 3 age-adapted scenarios for each
       assert.ok(scenario.teacherPhrase.length > 20);
     }
   }
+});
+
+test('resolvePublicAssetUrl resolves cleanly for root, relative, and GitHub Pages subpaths', () => {
+  const rel = 'assets/aistudio/fiche.pdf';
+  assert.equal(resolvePublicAssetUrl(rel, '/'), './assets/aistudio/fiche.pdf');
+  assert.equal(resolvePublicAssetUrl(rel, './'), './assets/aistudio/fiche.pdf');
+  assert.equal(resolvePublicAssetUrl(rel, '/aps-cycle-1/'), '/aps-cycle-1/assets/aistudio/fiche.pdf');
+  assert.equal(resolvePublicAssetUrl(`/${rel}`, '/aps-cycle-1'), '/aps-cycle-1/assets/aistudio/fiche.pdf');
+  assert.ok(!PDF_SOURCE_URL.startsWith('/assets/'), 'PDF_SOURCE_URL must not hardcode root-relative /assets/');
 });
 
 test('sort exercise validates correct buckets and keeps incorrect items retryable', () => {

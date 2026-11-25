@@ -1,7 +1,27 @@
 import { DiagramScenario, Exercise, SectionId, SectionMeta } from '../types/aps';
 
-export const PDF_SOURCE_URL =
-  '/assets/aistudio/fichepedagogiqueidentifierdangercycle11143518pdf-80709_f2a0e52a.pdf';
+const PDF_RELATIVE_PATH =
+  'assets/aistudio/fichepedagogiqueidentifierdangercycle11143518pdf-80709_f2a0e52a.pdf';
+
+export function resolvePublicAssetUrl(relativePath: string, baseUrl?: string): string {
+  const cleanPath = relativePath.replace(/^\/+/, '');
+  const rawBase =
+    baseUrl ??
+    (typeof import.meta !== 'undefined' &&
+    import.meta.env &&
+    typeof import.meta.env.BASE_URL === 'string'
+      ? import.meta.env.BASE_URL
+      : './');
+
+  if (!rawBase || rawBase === '/') {
+    return `./${cleanPath}`;
+  }
+
+  const normalizedBase = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+  return `${normalizedBase}${cleanPath}`;
+}
+
+export const PDF_SOURCE_URL = resolvePublicAssetUrl(PDF_RELATIVE_PATH);
 
 export const SECTIONS: Record<SectionId, SectionMeta> = {
   PS: {
